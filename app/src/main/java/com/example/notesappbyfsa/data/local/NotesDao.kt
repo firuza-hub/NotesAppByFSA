@@ -12,10 +12,10 @@ interface NotesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(list: List<Note>)
 
-    @Query("SELECT * from Notes WHERE id=:id")
+    @Query("SELECT * from Notes WHERE id=:id ")
     fun getById(id: Int): List<Note>
 
-    @Query("SELECT * from Notes")
+    @Query("SELECT * from Notes ORDER BY dateUpdated desc")
     fun getAll(): Flow<List<Note>>
 
     @Query("DELETE FROM Notes WHERE id=:id")

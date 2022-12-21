@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.notesappbyfsa.data.local.NotesDataManager
 import com.example.notesappbyfsa.data.local.entities.Note
+import kotlinx.coroutines.flow.transform
 import kotlinx.coroutines.launch
 
 class NotesViewModel(dataManager: NotesDataManager): ViewModel() {
@@ -15,7 +16,6 @@ class NotesViewModel(dataManager: NotesDataManager): ViewModel() {
         viewModelScope.launch {
             dataManager.getAll().collect {
                 notes.postValue(it)}
-
         }
     }
 

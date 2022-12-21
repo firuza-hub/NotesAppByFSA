@@ -25,7 +25,7 @@ class NotesListItemAdapter: RecyclerView.Adapter<NotesListItemAdapter.NotesListI
     override fun onBindViewHolder(holder: NotesListItemViewHolder, position: Int) {
         val currentItem = data[position]
         holder.binding.tvTitle.text = currentItem.title
-        holder.binding.tvDate.text = currentItem.dateUpdated
+        holder.binding.tvDate.text = currentItem.dateUpdated.toString()
         println("NOTES_ADAPTER: $currentItem")
     }
 
