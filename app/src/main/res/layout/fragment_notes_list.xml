@@ -34,6 +34,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="32dp"
                         android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
                         android:text="My Notes"
                         android:textSize="50sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,6 +48,18 @@
 
             </androidx.cardview.widget.CardView>
 
+            <com.example.notesappbyfsa.ui.customViews.CreateNoteView
+                android:id="@+id/btnCreateNote"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardColor="#E6FFFFFF"
+                app:icon="@drawable/ic_add"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cvHeader" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvNotes"
@@ -57,7 +72,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cvHeader">
+                app:layout_constraintTop_toBottomOf="@+id/btnCreateNote">
 
             </androidx.recyclerview.widget.RecyclerView>
         </androidx.constraintlayout.widget.ConstraintLayout>
