@@ -12,7 +12,7 @@ import com.example.notesappbyfsa.R
 
 class CreateNoteView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,
-    defStyle: Int = 0, defStyleRes: Int = 0
+    defStyle: Int = 0
 ) : CardView(context, attrs, defStyle) {
 
     private var ivLogo: ImageView

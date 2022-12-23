@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.notesappbyfsa.R
 import com.example.notesappbyfsa.databinding.FragmentNotesListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -30,6 +32,9 @@ class NotesListFragment : Fragment() {
             adapter = nAdapter
         }
 
+        binding.btnCreateNote.setOnClickListener{
+            findNavController().navigate(NotesListFragmentDirections.actionNotesListFragmentToCreateNoteFragment())
+        }
         viewModel.notes.observe(requireActivity()){nAdapter.setData(it )}
         return binding.root
     }

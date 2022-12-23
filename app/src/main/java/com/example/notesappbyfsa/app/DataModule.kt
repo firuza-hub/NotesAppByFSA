@@ -4,6 +4,7 @@ import androidx.room.Room
 import com.example.notesappbyfsa.data.local.NotesDataManager
 import com.example.notesappbyfsa.data.local.NotesDataManagerImpl
 import com.example.notesappbyfsa.data.local.NotesDatabase
+import com.example.notesappbyfsa.ui.createNote.NoteViewModel
 import com.example.notesappbyfsa.ui.notesList.NotesViewModel
 import org.koin.dsl.module
 import org.koin.android.ext.koin.androidContext
@@ -33,5 +34,9 @@ val dataModule = module {
 
     viewModel{
         NotesViewModel(get())
+    }
+    viewModel{
+
+        NoteViewModel(get())
     }
 }

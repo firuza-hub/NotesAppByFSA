@@ -9,15 +9,16 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NotesDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(list: List<Note>)
 
     @Query("SELECT * from Notes WHERE id=:id ")
-    fun getById(id: Int): List<Note>
+    suspend fun getById(id: Int): List<Note>
 
     @Query("SELECT * from Notes ORDER BY dateUpdated desc")
     fun getAll(): Flow<List<Note>>
 
     @Query("DELETE FROM Notes WHERE id=:id")
-    fun clear(id: Int)
+    suspend fun delete(id: Int)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun createNote(newNote: Note)
 }
