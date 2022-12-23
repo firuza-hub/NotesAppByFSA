@@ -75,6 +75,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/btnCreateNote">
 
             </androidx.recyclerview.widget.RecyclerView>
+
+            <ProgressBar
+                android:id="@+id/loader"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/rvNotes"
+                app:layout_constraintEnd_toEndOf="@+id/rvNotes"
+                app:layout_constraintStart_toStartOf="@+id/rvNotes"
+                app:layout_constraintTop_toTopOf="@+id/rvNotes" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

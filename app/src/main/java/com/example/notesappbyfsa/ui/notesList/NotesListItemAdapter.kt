@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.notesappbyfsa.R
 import com.example.notesappbyfsa.data.local.entities.Note
 import com.example.notesappbyfsa.databinding.FragmentNotesListItemBinding
+import java.text.SimpleDateFormat
 
-class NotesListItemAdapter: RecyclerView.Adapter<NotesListItemAdapter.NotesListItemViewHolder>() {
+class NotesListItemAdapter(val deleteItem:(id:Int) -> Unit): RecyclerView.Adapter<NotesListItemAdapter.NotesListItemViewHolder>() {
 
+    private val formatter = SimpleDateFormat("dd/MM/yyyy")
     private var data = mutableListOf<Note>()
     class NotesListItemViewHolder(val binding: FragmentNotesListItemBinding): RecyclerView.ViewHolder(binding.root){
 
@@ -25,7 +27,9 @@ class NotesListItemAdapter: RecyclerView.Adapter<NotesListItemAdapter.NotesListI
     override fun onBindViewHolder(holder: NotesListItemViewHolder, position: Int) {
         val currentItem = data[position]
         holder.binding.tvTitle.text = currentItem.title
-        holder.binding.tvDate.text = currentItem.dateUpdated.toString()
+        holder.binding.tvContent.text = currentItem.content
+        holder.binding.tvDate.text = formatter.format(currentItem.dateUpdated)
+        holder.binding.btnDelete.setOnClickListener { deleteItem(currentItem.id) }
         println("NOTES_ADAPTER: $currentItem")
     }
 

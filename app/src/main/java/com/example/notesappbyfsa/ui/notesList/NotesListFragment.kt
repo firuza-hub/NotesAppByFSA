@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.example.notesappbyfsa.R
 import com.example.notesappbyfsa.databinding.FragmentNotesListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -25,7 +25,7 @@ class NotesListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_notes_list, container, false)
-        nAdapter = NotesListItemAdapter()
+        nAdapter = NotesListItemAdapter(){ viewModel.deleteItem(it)}
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.rvNotes.apply {
@@ -36,7 +36,9 @@ class NotesListFragment : Fragment() {
             findNavController().navigate(NotesListFragmentDirections.actionNotesListFragmentToCreateNoteFragment())
         }
         viewModel.notes.observe(requireActivity()){nAdapter.setData(it )}
+        viewModel.showLoader.observe(requireActivity()){binding.loader.isVisible = it}
         return binding.root
     }
+
 
 }
