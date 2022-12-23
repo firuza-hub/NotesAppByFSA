@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.notesappbyfsa.R
 import com.example.notesappbyfsa.databinding.FragmentCreateNoteBinding
-import com.example.notesappbyfsa.ui.notesList.NotesListFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CreateNoteFragment : Fragment() {
@@ -25,12 +25,15 @@ class CreateNoteFragment : Fragment() {
         binding.btnSave.setOnClickListener{
             viewModel.title = binding.etTitle.text.toString()
             viewModel.content = binding.etContent.text.toString()
-            viewModel.saveNote {
-                findNavController().navigate(CreateNoteFragmentDirections.actionCreateNoteFragmentToNotesListFragment())
+            viewModel.saveNote( navigateBack()) {
+                Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
             }
+
         }
         return binding.root
     }
 
+
+    private fun navigateBack()= {findNavController().navigate(CreateNoteFragmentDirections.actionCreateNoteFragmentToNotesListFragment())}
 
 }
